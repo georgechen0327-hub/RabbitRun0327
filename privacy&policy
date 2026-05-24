@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>“私兔欢乐跑”隐私政策声明</title>
+    <!-- 引入 Google Fonts 现代字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* 核心设计系统变量 */
+        :root {
+            --primary: #00E5FF; /* rrCyan 蓝绿色 */
+            --primary-hover: #00B8D4;
+            --primary-glow: rgba(0, 229, 255, 0.15);
+            --bg-start: #0B0F19; /* 高级深色渐变起点 */
+            --bg-end: #1E293B;   /* 渐变终点 */
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-main: #F8FAFC;
+            --text-muted: #94A3B8;
+            --text-accent: #00E5FF;
+            --sidebar-width: 280px;
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* 基础样式重置与排版 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+            background-attachment: fixed;
+            color: var(--text-main);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
+        }
+
+        /* 网页整体布局结构 */
+        .app-container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            gap: 40px;
+        }
+
+        /* 左侧固定侧边栏 */
+        .sidebar {
+            width: var(--sidebar-width);
+            flex-shrink: 0;
+            position: sticky;
+            top: 40px;
+            height: calc(100vh - 80px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .brand-container {
+            margin-bottom: 24px;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--primary), #00B0FF);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px var(--primary-glow);
+        }
+
+        .logo-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: #0F172A;
+        }
+
+        .toc-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        /* 自定义滚动条 */
+        .toc-list::-webkit-scrollbar {
+            width: 4px;
+        }
+        .toc-list::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+        }
+
+        .toc-item a {
+            display: block;
+            padding: 8px 16px;
+            color: var(--text-muted);
+            text-decoration: none;
+            border-left: 2px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition-smooth);
+        }
+
+        .toc-item a:hover, .toc-item.active a {
+            color: var(--primary);
+            border-left-color: var(--primary);
+            background: rgba(0, 229, 255, 0.04);
+            padding-left: 20px;
+        }
+
+        .sidebar-footer {
+            margin-top: 24px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 16px;
+        }
+
+        /* 右侧主要内容区域 */
+        .main-content {
+            flex-grow: 1;
+            min-width: 0; /* 防止 Flex 项目溢出 */
+        }
+
+        /* 顶部卡片：标题与说明 */
+        .header-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), #00E5FF, #00B0FF);
+        }
+
+        .app-badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(0, 229, 255, 0.1);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            border: 1px solid rgba(0, 229, 255, 0.15);
+        }
+
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            margin-bottom: 12px;
+            background: linear-gradient(to right, #FFFFFF, #E2E8F0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .meta-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 16px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* 隐私政策章节卡片 */
+        .section-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 24px;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            transition: var(--transition-smooth);
+        }
+
+        .section-card:hover {
+            border-color: rgba(0, 229, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 229, 255, 0.03);
+        }
+
+        /* 章节标题 */
+        h2 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-main);
+        }
+
+        h2::before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 18px;
+            background: var(--primary);
+            border-radius: 2px;
+            box-shadow: 0 0 8px var(--primary);
+        }
+
+        p {
+            color: #CBD5E1;
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+        }
+
+        /* HealthKit 专属突出显示框 */
+        .highlight-box {
+            background: rgba(0, 229, 255, 0.03);
+            border: 1.5px dashed rgba(0, 229, 255, 0.3);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .highlight-box h3 {
+            color: var(--primary);
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .highlight-box strong {
+            color: #FFFFFF;
+            background: linear-gradient(120deg, rgba(0, 229, 255, 0.15) 0%, rgba(0, 229, 255, 0.05) 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        /* 列表样式 */
+        .bullet-list {
+            list-style: none;
+            margin-bottom: 16px;
+        }
+
+        .bullet-list li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 10px;
+            color: #CBD5E1;
+            font-size: 0.95rem;
+        }
+
+        .bullet-list li::before {
+            content: "•";
+            position: absolute;
+            left: 8px;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* 权限对照表格 */
+        .permission-table-wrapper {
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+            margin: 20px 0 10px 0;
+        }
+
+        .permission-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        .permission-table th, .permission-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .permission-table th {
+            background: rgba(255, 255, 255, 0.03);
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .permission-table td {
+            color: #CBD5E1;
+        }
+
+        .permission-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .permission-badge {
+            background: rgba(255, 255, 255, 0.06);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: var(--text-main);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        /* 链接按钮样式 */
+        .link-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-top: 8px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            background: rgba(0, 229, 255, 0.05);
+            border: 1px solid rgba(0, 229, 255, 0.1);
+            transition: var(--transition-smooth);
+        }
+
+        .link-button:hover {
+            color: #FFFFFF;
+            background: var(--primary);
+            box-shadow: 0 0 12px rgba(0, 229, 255, 0.4);
+            border-color: var(--primary);
+            transform: translateY(-1px);
+        }
+
+        .link-button svg {
+            width: 14px;
+            height: 14px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .small-note {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 6px;
+        }
+
+        /* 响应式媒体查询 */
+        @media (max-width: 1024px) {
+            .app-container {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .sidebar {
+                width: 100%;
+                position: relative;
+                top: 0;
+                height: auto;
+                margin-bottom: 20px;
+            }
+
+            .toc-list {
+                flex-direction: row;
+                overflow-x: auto;
+                padding-bottom: 8px;
+                white-space: nowrap;
+            }
+
+            .toc-item a {
+                border-left: none;
+                border-bottom: 2px solid transparent;
+                padding: 8px 12px;
+            }
+
+            .toc-item a:hover, .toc-item.active a {
+                border-left-color: transparent;
+                border-bottom-color: var(--primary);
+                padding-left: 12px;
+            }
+
+            .sidebar-footer {
+                display: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .header-card {
+                padding: 24px;
+            }
+
+            .section-card {
+                padding: 24px;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            .permission-table th, .permission-table td {
+                padding: 10px 12px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- 左侧导航 -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="brand-container">
+                    <a href="#" class="brand-logo">
+                        <div class="logo-icon">
+                            <!-- 兔子跑步抽象图标 -->
+                            <svg viewBox="0 0 24 24">
+                                <path d="M19.5,5.5C19.5,4.7 18.8,4 18,4C17.2,4 16.5,4.7 16.5,5.5C16.5,6.3 17.2,7 18,7C18.8,7 19.5,6.3 19.5,5.5M16.5,8.5C15.7,8.5 15,9.2 15,10V12H13V9C13,8.4 12.6,8 12,8C11.4,8 11,8.4 11,9V12H9C8.4,12 8,12.4 8,13C8,13.6 8.4,14 9,14H11V16H10C8.9,16 8,16.9 8,18C8,19.1 8.9,20 10,20H15C15.6,20 16,19.6 16,19V15.5C17.4,14.6 18.5,13.2 18.9,11.5L20.8,9.6C21.2,9.2 21.2,8.5 20.8,8.1L19.4,6.7C19,6.3 18.3,6.3 17.9,6.7L16.5,8.1V8.5M10,22C8.9,22 8,21.1 8,20C8,18.9 8.9,18 10,18C11.1,18 12,18.9 12,20C12,21.1 11.1,22 10,22Z"/>
+                            </svg>
+                        </div>
+                        <span>私兔欢乐跑</span>
+                    </a>
+                </div>
+                <nav>
+                    <ul class="toc-list">
+                        <li class="toc-item active"><a href="#collect">信息收集与使用</a></li>
+                        <li class="toc-item"><a href="#healthkit">HealthKit 说明</a></li>
+                        <li class="toc-item"><a href="#storage">数据存储</a></li>
+                        <li class="toc-item"><a href="#share">数据共享</a></li>
+                        <li class="toc-item"><a href="#security">数据安全</a></li>
+                        <li class="toc-item"><a href="#delete">数据删除</a></li>
+                        <li class="toc-item"><a href="#permissions">权限说明</a></li>
+                        <li class="toc-item"><a href="#minor">未成年人保护</a></li>
+                        <li class="toc-item"><a href="#update">政策更新</a></li>
+                        <li class="toc-item"><a href="#contact">联系我们</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="sidebar-footer">
+                <p>© 2026 私兔欢乐跑团队<br>保留所有权利。</p>
+            </div>
+        </aside>
+
+        <!-- 右侧内容 -->
+        <main class="main-content">
+            <!-- 头部卡片 -->
+            <div class="header-card">
+                <span class="app-badge">官方隐私政策</span>
+                <h1>“私兔欢乐跑”隐私政策声明</h1>
+                <p>私兔欢乐跑（以下简称“我们”或“本应用”）是一款跑步训练辅助应用。我们非常重视您的隐私，并承诺保护您在日常跑步训练中产生的个人数据。本政策旨在说明我们如何收集、使用、存储您的个人数据，以及您对这些数据所享有的控制权。</p>
+                <div class="meta-info">
+                    <div class="meta-item">
+                        <span>版本：1.0</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>最后更新日期：2026年5月24日</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>生效日期：2026年5月24日</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 1. 信息收集与使用 -->
+            <section id="collect" class="section-card">
+                <h2>信息收集与使用</h2>
+                <p>为提供跑步训练指导、运动轨迹记录及体能区间计算等核心功能，我们会在获得您的明确授权后，收集和使用以下信息：</p>
+                <ul class="bullet-list">
+                    <li><strong>健康数据</strong>：包括心率、步频、跑步距离等。这些数据用于实时跑步指导、训练负荷评估和心率区间计算。</li>
+                    <li><strong>位置信息</strong>：仅在户外跑步训练期间记录您的运动轨迹、计算跑步距离及配速。</li>
+                    <li><strong>蓝牙设备信息</strong>：用于连接外部心率带、运动手表等蓝牙外设，以获取高精度实时运动心率。</li>
+                    <li><strong>运动传感器数据</strong>：使用您设备的陀螺仪和加速度计，用于计算运动中的步频。</li>
+                </ul>
+            </section>
+
+            <!-- 2. 健康数据（HealthKit）说明 -->
+            <section id="healthkit" class="section-card">
+                <h2>健康数据（HealthKit）说明</h2>
+                <p>本应用整合了 Apple HealthKit 框架。为了将您的训练记录与 iOS 系统健身生态深度结合，我们需要访问您设备上的 HealthKit 数据。</p>
+                
+                <div class="highlight-box">
+                    <h3>
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="var(--primary)">
+                            <path d="M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22C17.53,22 22,17.53 22,12C22,6.47 17.53,2 12,2M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M15.59,11.59L13.5,13.68V8H10.5V13.68L8.41,11.59L6.3,13.7L12,19.4L17.7,13.7L15.59,11.59Z"/>
+                        </svg>
+                        HealthKit 数据具体用途
+                    </h3>
+                    <ul class="bullet-list" style="margin-bottom: 0;">
+                        <li><strong>读取历史运动数据</strong>：获取您的历史运动心率及频次，用于智能评估并计算适合您的“5区心率”跑步训练区间。</li>
+                        <li><strong>写入训练数据</strong>：将您在私兔欢乐跑中完成的跑步训练记录（如运动距离、平均配速、实时心率曲线等）同步写入系统“健康”与“健身”应用，帮助您在系统层级整合和追踪体能数据。</li>
+                    </ul>
+                </div>
+
+                <p>我们严格遵循 Apple 开发者规范。我们只会申请读取或写入完成上述功能所必需的健康数据类型，绝不请求与核心跑步训练无关的任何其他数据。</p>
+
+                <div class="highlight-box" style="border-style: solid; border-color: rgba(239, 68, 68, 0.4); background: rgba(239, 68, 68, 0.02);">
+                    <h3 style="color: #F87171;">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="#F87171">
+                            <path d="M12,2L1,21H23L12,2M12,6L19.8,19H4.2L12,6M11,10V14H13V10H11M11,16V18H13V16H11Z"/>
+                        </svg>
+                        不用于广告和数据挖掘的严格承诺
+                    </h3>
+                    <p style="color: #F8FAFC; margin-bottom: 0; font-weight: 500;">
+                        <strong>我们明确承诺：绝不会将从 HealthKit 框架获得的任何用户数据（无论是具体健康指标、聚合统计数据还是去标识化的匿名数据）用于广告展示、市场营销、用户画像针对（Targeting）、数据挖掘，或出售、出租、披露给广告网络、数据经纪人、保险公司及任何第三方。</strong> 这些数据仅限用于为您提供跑步训练和健康记录管理服务。
+                    </p>
+                </div>
+
+                <p><strong>您的完全控制权</strong>：您对健康数据的授权拥有绝对的决定权。您可以随时前往 iOS 系统的<strong>「设置」 &rarr; 「隐私与安全」 &rarr; 「健康」 &rarr; 「私兔欢乐跑」</strong>中，随时启用或撤销读取与写入数据的权限。</p>
+
+                <a href="https://www.apple.com/privacy/features/" class="link-button" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M18,19H6C5.45,19 5,18.55 5,18V6C5,5.45 5,5 6,5H11V3H6C4.35,3 3,4.35 3,6V18C3,19.65 4.35,21 6,21H18C19.65,21 21,19.65 21,18V13H19V18C19,18.55 18.55,19 18,19M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3H14Z"/>
+                    </svg>
+                    参阅 Apple 隐私保护官方说明
+                </a>
+                <span class="small-note">（向下滚动至“健康”部分获取详细介绍）</span>
+            </section>
+
+            <!-- 3. 数据存储 -->
+            <section id="storage" class="section-card">
+                <h2>数据存储</h2>
+                <p>我们秉承“最小化本地化”原则管理您的核心数据：</p>
+                <ul class="bullet-list">
+                    <li><strong>设备本地存储</strong>：您的运动轨迹、心率区间等全部跑步训练数据仅存储在您的设备本地（使用 iOS SwiftData 技术加密存储），不会上传到我们的任何云端服务器。</li>
+                    <li><strong>系统同步</strong>：健康数据通过 HealthKit 直接与 iOS 系统的健康数据库进行双向同步，同步过程遵循 Apple 严格的本地沙盒安全规范。</li>
+                    <li><strong>云端隔离</strong>：我们不提供、也不维护任何用于存储您运动数据的云端数据库，亦不会将您的健康数据上传至您的个人 iCloud 或其他第三方云存储服务。</li>
+                </ul>
+            </section>
+
+            <!-- 4. 数据共享 -->
+            <section id="share" class="section-card">
+                <h2>数据共享</h2>
+                <p>我们坚守数据安全底线，不会共享您的任何数据：</p>
+                <ul class="bullet-list">
+                    <li>我们不会以任何形式向第三方出售、租赁、交易或转让您的任何个人隐私数据或健康数据。</li>
+                    <li>我们不会将您的个人隐私和运动数据用于广告投放、定向营销或商业性数据分析。</li>
+                    <li>除了在您授权的情况下，将跑步训练数据同步写入系统自带的“健康”与“健身”应用外，我们绝不会与其他任何第三方应用或网络服务共享您的个人数据。</li>
+                </ul>
+            </section>
+
+            <!-- 5. 数据安全 -->
+            <section id="security" class="section-card">
+                <h2>数据安全</h2>
+                <p>您的隐私数据安全受到多重保护：</p>
+                <ul class="bullet-list">
+                    <li>本应用完全置于 iOS 系统级的安全沙盒机制中运行，应用间存在物理隔离，防止未授权的数据读取。</li>
+                    <li>所有通过 HealthKit 读取和写入的健康数据均由 iOS 操作系统进行硬件级强加密处理。</li>
+                    <li>应用在运行时，健康数据和位置数据的读取均经过系统的权限弹窗确认，在您的控制下进行。</li>
+                </ul>
+            </section>
+
+            <!-- 6. 数据删除 -->
+            <section id="delete" class="section-card">
+                <h2>数据删除</h2>
+                <p>我们为您提供了快捷便利的数据删除和权限管理方式：</p>
+                <ul class="bullet-list">
+                    <li><strong>单条记录删除</strong>：您可以在应用内的训练历史列表中，随时手动删除任意一条跑步记录。一旦删除，本地存储（SwiftData）中的相关数据将被立即且永久抹除，不可恢复。</li>
+                    <li><strong>撤销授权</strong>：您随时可以通过 iOS 系统的 <strong>「设置」 &rarr; 「隐私与安全」 &rarr; 「健康」 / 「定位服务」</strong> 撤销对私兔欢乐跑的全部或部分数据访问授权。</li>
+                    <li><strong>应用卸载</strong>：当您在设备上卸载私兔欢乐跑时，存储在应用沙盒（SwiftData）内的所有训练数据都将被 iOS 系统自动、彻底地清空。</li>
+                </ul>
+            </section>
+
+            <!-- 7. 权限说明 -->
+            <section id="permissions" class="section-card">
+                <h2>设备权限使用说明</h2>
+                <p>为实现各项跑步训练核心功能，本应用可能在特定场景下向您申请以下设备系统权限：</p>
+                
+                <div class="permission-table-wrapper">
+                    <table class="permission-table">
+                        <thead>
+                            <tr>
+                                <th>权限类型</th>
+                                <th>申请目的</th>
+                                <th>若拒绝的影响</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="permission-badge">蓝牙 / Bluetooth</span></td>
+                                <td>用于搜索并无线连接外设心率带、心率手表等设备，在运动中获取实时心率。</td>
+                                <td>将无法连接外置蓝牙心率带，但不影响使用设备自带的运动传感器。</td>
+                            </tr>
+                            <tr>
+                                <td><span class="permission-badge">定位 / Location</span></td>
+                                <td>用于在户外跑步期间持续记录您的跑步路线、计算运动距离和实时配速。</td>
+                                <td>将无法记录您的户外跑步轨迹和运动配速，户外跑步数据将不准确。</td>
+                            </tr>
+                            <tr>
+                                <td><span class="permission-badge">健康（读取） / Health Read</span></td>
+                                <td>读取历史运动记录与体能表现，帮助计算最适合您的 5 区心率训练区间。</td>
+                                <td>应用将无法智能计算您的心率训练区间，心率区间需要您手动输入。</td>
+                            </tr>
+                            <tr>
+                                <td><span class="permission-badge">健康（写入） / Health Write</span></td>
+                                <td>在跑步完成后，将本次训练数据（配速、距离、心率）写入系统健康 App，同步到健身记录。</td>
+                                <td>您的训练记录将无法同步到 iOS 系统健身环与健身 App 中。</td>
+                            </tr>
+                            <tr>
+                                <td><span class="permission-badge">运动传感器 / Motion Sensor</span></td>
+                                <td>访问核心运动与健身数据，读取您的实时跑步步频。</td>
+                                <td>将无法记录您跑步时的实时步频数据。</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 8. 未成年人保护 -->
+            <section id="minor" class="section-card">
+                <h2>未成年人保护</h2>
+                <p>我们非常重视对未成年人个人信息的保护：</p>
+                <ul class="bullet-list">
+                    <li>本应用主要针对具有日常跑步健身需求的成人开发，并不针对 13 岁以下的儿童。</li>
+                    <li>我们不会故意、或在未经父母或监护人同意的情况下收集任何 13 岁以下儿童的个人信息。</li>
+                    <li>如果您是儿童的家长或监护人，并发现您的孩子在未经您同意的情况下向本应用授权了隐私数据，请通过联系方式与我们联系，我们将在核实后立即抹除相关数据。</li>
+                </ul>
+            </section>
+
+            <!-- 9. 隐私政策更新 -->
+            <section id="update" class="section-card">
+                <h2>隐私政策更新</h2>
+                <p>随着本应用功能的迭代和法律法规的更新，我们可能会不时修订本隐私政策的内容。任何更新均会在应用内进行展示并更新生效日期。在更新隐私政策发布后，若您继续使用本应用，即表示您已阅读并同意接受更新后的隐私政策内容。</p>
+            </section>
+
+            <!-- 10. 联系我们 -->
+            <section id="contact" class="section-card">
+                <h2>联系我们</h2>
+                <p>如果您对本隐私政策或您的个人数据安全有任何疑问、意见或反馈，请通过 App Store Connect 中的开发者技术支持网站与我们取得联系。我们将会在收到您反馈后的合理时间内为您解答。</p>
+            </section>
+        </main>
+    </div>
+
+    <!-- 简易的导航高亮与交互脚本 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+            const navItems = document.querySelectorAll('.toc-item');
+
+            // 监听滚动，自动高亮对应目录
+            const options = {
+                root: null,
+                rootMargin: '0px 0px -40% 0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const activeId = entry.target.getAttribute('id');
+                        navItems.forEach(item => {
+                            const link = item.querySelector('a');
+                            if (link.getAttribute('href') === `#${activeId}`) {
+                                item.classList.add('active');
+                                // 将当前高亮项自动滚动到可视区域内
+                                item.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                            } else {
+                                item.classList.remove('active');
+                            }
+                        });
+                    }
+                });
+            }, options);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
